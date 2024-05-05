@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text</title>
+</head>
+<body>
+    <h1>Speech to Text</h1>
+    <button id="start-btn" onclick="record()">Start Recording</button>
+    <div id="output"></div>
+
+    <!-- Include the JavaScript file -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function record() {
+            $.ajax({
+                type: "POST",
+                url: "/record",
+                success: function(data) {
+                    document.getElementById('output').innerText = "Recognized Text: " + data;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
